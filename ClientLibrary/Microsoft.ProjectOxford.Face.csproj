@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>Microsoft.ProjectOxford.Face.DotNetCore</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>Adam Grocholski</Authors>
+    <Company>Adam Grocholski</Company>
+    <Product>Microsoft.ProjectOxford.Face.DotNetCore</Product>
+    <Description>Microsoft Cognitive Services Face API Client Library for .NET Core.</Description>
+    <Copyright>Copyright (c) 2017</Copyright>
+    <PackageLicenseUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore</RepositoryUrl>
+    <PackageReleaseNotes>Initial release to support .NET Core 1.1</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Face Oxford ProjectOxford Microsoft Cognitive CognitiveServices</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
