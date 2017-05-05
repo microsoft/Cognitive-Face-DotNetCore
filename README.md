@@ -2,6 +2,11 @@
 
 # Face API: .NET Core Client Library & Sample
 
+| Branch      | Build Status  |
+| ----------- | ------------- |
+| develop     | [![Build Status](https://travis-ci.org/Microsoft/Cognitive-Face-DotNetCore.svg?branch=develop)](https://travis-ci.org/Microsoft/Cognitive-Face-DotNetCore) |
+| master      | [![Build Status](https://travis-ci.org/Microsoft/Cognitive-Face-DotNetCore.svg?branch=master)](https://travis-ci.org/Microsoft/Cognitive-Face-DotNetCore) |
+
 ## Overview
 This repo contains the .NET Core client library and sample for the Microsoft Face API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.
 
