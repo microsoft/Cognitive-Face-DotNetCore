@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Microsoft.ProjectOxford.Face.DotNetCore</PackageId>
     <Version>1.1.0</Version>
@@ -13,13 +13,13 @@
     <PackageLicenseUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/adgroc/Cognitive-Face-DotNetCore</RepositoryUrl>
-    <PackageReleaseNotes>Initial release to support .NET Core 1.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Initial release to support .NET Core 2.0</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Face Oxford ProjectOxford Microsoft Cognitive CognitiveServices</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
 </Project>
