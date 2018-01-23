@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Microsoft.ProjectOxford.Face.DotNetCore</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Adam Grocholski</Authors>
     <Company>Adam Grocholski</Company>
     <Product>Microsoft.ProjectOxford.Face.DotNetCore</Product>
@@ -19,6 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ProjectOxford.Common.DotNetCore" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
 

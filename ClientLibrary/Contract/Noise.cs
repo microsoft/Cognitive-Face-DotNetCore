@@ -31,66 +31,55 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Definition of noise level
     /// </summary>
-    public class FaceAPIException : Exception
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum NoiseLevel
     {
-        #region Constructors
+        /// <summary>
+        /// Low noise level indicating a clear face image
+        /// </summary>
+        Low,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Medium noise level indicating a slightly noisy face image
         /// </summary>
-        public FaceAPIException()
-        {
-        }
+        Medium,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// High noise level indicating a extremely noisy face image
         /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
-        {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
-        }
+        High
+    }
 
-        #endregion Constructors
-
+    /// <summary>
+    /// Face Noise class contains noise information
+    /// </summary>
+    public class Noise
+    {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating noise level of face image
         /// </summary>
-        public string ErrorCode
+        public NoiseLevel NoiseLevel
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Noise value is in range [0, 1]. Larger value means the face image is more noisy.
+        /// [0, 0.3) is low noise level.
+        /// [0.3, 0.7) is medium noise level.
+        /// [0.7, 1] is high noise level. 
         /// </summary>
-        public string ErrorMessage
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Gets or sets http status of http response.
-        /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public double Value
         {
             get; set;
         }

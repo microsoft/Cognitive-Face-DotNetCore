@@ -31,66 +31,55 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Definition of blur level
     /// </summary>
-    public class FaceAPIException : Exception
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum BlurLevel
     {
-        #region Constructors
+        /// <summary>
+        /// Low blur level indicating a clear face image
+        /// </summary>
+        Low,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Medium blur level indicating a slightly blurry face image
         /// </summary>
-        public FaceAPIException()
-        {
-        }
+        Medium,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// High blur level indicating a extremely blurry face image
         /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
-        {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
-        }
+        High
+    }
 
-        #endregion Constructors
-
+    /// <summary>
+    /// Face Blur class contains blur information
+    /// </summary>
+    public class Blur
+    {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating the blur level of face image
         /// </summary>
-        public string ErrorCode
+        public BlurLevel BlurLevel
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Blur value is in range [0, 1]. Larger value means the face image is more blurry.
+        /// [0, 0.25) is low blur level.
+        /// [0.25, 0.75) is medium blur level.
+        /// [0.75, 1] is high blur level.
         /// </summary>
-        public string ErrorMessage
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Gets or sets http status of http response.
-        /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public double Value
         {
             get; set;
         }

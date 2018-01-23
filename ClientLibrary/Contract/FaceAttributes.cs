@@ -99,6 +99,17 @@ namespace Microsoft.ProjectOxford.Face.Contract
         }
 
         /// <summary>
+        /// Gets or sets the emotion.
+        /// </summary>
+        /// <value>
+        /// The emotion.
+        /// </value>
+        public Common.Contract.EmotionScores Emotion
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Gets or sets the glasses type.
         /// </summary>
         /// <value>
@@ -106,6 +117,83 @@ namespace Microsoft.ProjectOxford.Face.Contract
         /// </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public Glasses Glasses
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the blur
+        /// </summary>
+        /// <value>
+        /// The blur type
+        /// </value>
+        public Blur Blur
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the exposure
+        /// </summary>
+        /// <value>
+        /// The exposure type
+        /// </value>
+        public Exposure Exposure
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the noise
+        /// </summary>
+        /// <value>
+        /// The noise type
+        /// </value>
+        public Noise Noise
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the makeup
+        /// </summary>
+        /// <value>
+        /// The makeup type
+        /// </value>
+        public Makeup Makeup
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the accessories
+        /// </summary>
+        /// <value>
+        /// The accessory type array
+        /// </value>
+        public Accessory[] Accessories
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the occlusion
+        /// </summary>
+        /// <value>
+        /// The occlusion type
+        /// </value>
+        public Occlusion Occlusion
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the hair
+        /// </summary>
+        /// <value>
+        /// The hair type
+        /// </value>
+        public Hair Hair
         {
             get; set;
         }

@@ -31,66 +31,107 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Hair color type
     /// </summary>
-    public class FaceAPIException : Exception
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum HairColorType
     {
-        #region Constructors
+        /// <summary>
+        /// unknown
+        /// </summary>
+        Unknown,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// White
         /// </summary>
-        public FaceAPIException()
+        White,
+
+        /// <summary>
+        /// Gray
+        /// </summary>
+        Gray,
+
+        /// <summary>
+        /// Blond
+        /// </summary>
+        Blond,
+
+        /// <summary>
+        /// Brown
+        /// </summary>
+        Brown,
+
+        /// <summary>
+        /// Red
+        /// </summary>
+        Red,
+
+        /// <summary>
+        /// Black
+        /// </summary>
+        Black,
+
+        /// <summary>
+        /// Other
+        /// </summary>
+        Other
+    }
+
+    /// <summary>
+    /// Face HiarColor class contains hair color information
+    /// </summary>
+    public class HairColor
+    {
+        /// <summary>
+        /// Indicating the hair color type
+        /// </summary>
+        public HairColorType Color
         {
+            get; set;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Indicating the confidence for hair color type
         /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
+        public double Confidence
         {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
+            get; set;
         }
+    }
 
-        #endregion Constructors
-
+    /// <summary>
+    /// Face Hair class contains hair information
+    /// </summary>
+    public class Hair
+    {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating the confidence of a bald head
         /// </summary>
-        public string ErrorCode
+        public double Bald
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Indicating whether hair is occluded or not
         /// </summary>
-        public string ErrorMessage
+        public bool Invisible
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets http status of http response.
+        /// Indicating all possible hair colors with confidences
         /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public HairColor[] HairColor
         {
             get; set;
         }

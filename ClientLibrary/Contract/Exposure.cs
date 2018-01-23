@@ -31,66 +31,55 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Definition of exposure level
     /// </summary>
-    public class FaceAPIException : Exception
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ExposureLevel
     {
-        #region Constructors
+        /// <summary>
+        /// Indicating face image is in under exposure
+        /// </summary>
+        UnderExposure,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Indicating face image is in good exposure
         /// </summary>
-        public FaceAPIException()
-        {
-        }
+        GoodExposure,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Indicating face image is in over exposure
         /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
-        {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
-        }
+        OverExposure
+    }
 
-        #endregion Constructors
-
+    /// <summary>
+    /// Face Exposure class contains exposure information
+    /// </summary>
+    public class Exposure
+    {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating exposure level of face image
         /// </summary>
-        public string ErrorCode
+        public ExposureLevel ExposureLevel
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Exposure value is in range [0, 1]. Larger value means the face image is more brighter.
+        /// [0, 0.25) is under exposure.
+        /// [0.25, 0.75) is good exposure.
+        /// [0.75, 1] is over exposure.
         /// </summary>
-        public string ErrorMessage
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Gets or sets http status of http response.
-        /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public double Value
         {
             get; set;
         }

@@ -31,66 +31,35 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Face Occlusion class contains occlusion information
     /// </summary>
-    public class FaceAPIException : Exception
+    public class Occlusion
     {
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
-        /// </summary>
-        public FaceAPIException()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
-        /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
-        {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
-        }
-
-        #endregion Constructors
-
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating whether forehead is occluded or not
         /// </summary>
-        public string ErrorCode
+        public bool ForeheadOccluded
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Indicating whether eye is occluded or not
         /// </summary>
-        public string ErrorMessage
+        public bool EyeOccluded
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets http status of http response.
+        /// Indicating whether mouth is occluded or not
         /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public bool MouthOccluded
         {
             get; set;
         }

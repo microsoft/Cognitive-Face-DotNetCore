@@ -31,66 +31,52 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Net;
-
-namespace Microsoft.ProjectOxford.Face
+namespace Microsoft.ProjectOxford.Face.Contract
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
-    /// Represents client error with detailed error message and error code
+    /// Accessory type
     /// </summary>
-    public class FaceAPIException : Exception
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum AccessoryType
     {
-        #region Constructors
+        /// <summary>
+        /// Headwear
+        /// </summary>
+        Headwear,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Glasses
         /// </summary>
-        public FaceAPIException()
-        {
-        }
+        Glasses,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// Mask
         /// </summary>
-        /// <param name="errorCode">Code represents the error category</param>
-        /// <param name="errorMessage">Message represents the detailed error description</param>
-        /// <param name="statusCode">Http status code</param>
-        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
-            : base(errorMessage + "(" + errorCode + ")")
-        {
-            ErrorCode = errorCode;
-            ErrorMessage = errorMessage;
-            HttpStatus = statusCode;
-        }
+        Mask
+    }
 
-        #endregion Constructors
-
+    /// <summary>
+    /// Face accessory class contains accessory information
+    /// </summary>
+    public class Accessory
+    {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the error code
+        /// Indicating the accessory type
         /// </summary>
-        public string ErrorCode
+        public AccessoryType Type
         {
             get; set;
         }
 
         /// <summary>
-        /// Gets or sets the error message
+        /// Indicating the confidence for accessory type
         /// </summary>
-        public string ErrorMessage
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Gets or sets http status of http response.
-        /// </summary>
-        /// <value>
-        /// The HTTP status.
-        /// </value>
-        public HttpStatusCode HttpStatus
+        public double Confidence
         {
             get; set;
         }
