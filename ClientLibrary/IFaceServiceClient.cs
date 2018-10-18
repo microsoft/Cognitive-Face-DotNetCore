@@ -454,6 +454,270 @@ namespace Microsoft.ProjectOxford.Face
         /// <returns></returns>
         Task<VerifyResult> VerifyAsync(Guid faceId, string personGroupId, Guid personId);
 
+        /// <summary>
+        /// Creates the large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task CreateLargeFaceListAsync(string largeFaceListId, string name, string userData = null);
+
+        /// <summary>
+        /// Deletes the large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <returns>Task object.</returns>
+        Task DeleteLargeFaceListAsync(string largeFaceListId);
+
+        /// <summary>
+        /// Gets the large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <returns>Face list object.</returns>
+        Task<LargeFaceList> GetLargeFaceListAsync(string largeFaceListId);
+
+        /// <summary>
+        /// Gets large face list training status asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list id.</param>
+        /// <returns>The large face list training status.</returns>
+        Task<TrainingStatus> GetLargeFaceListTrainingStatusAsync(string largeFaceListId);
+
+        /// <summary>
+        /// Lists the large face lists asynchronously.
+        /// </summary>
+        /// <param name="start">The start point string in listing large face lists</param>
+        /// <param name="top">The number of large face lists to list</param>
+        /// <returns>LargeFaceListMetadata array.</returns>
+        Task<LargeFaceList[]> ListLargeFaceListsAsync(string start = "", int top = 1000);
+
+        /// <summary>
+        /// Trains the large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list id.</param>
+        /// <returns>Task object.</returns>
+        Task TrainLargeFaceListAsync(string largeFaceListId);
+
+        /// <summary>
+        /// Updates the large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdateLargeFaceListAsync(string largeFaceListId, string name, string userData);
+
+        /// <summary>
+        /// Adds the face to large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="imageUrl">The face image URL.</param>
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddFaceToLargeFaceListAsync(string largeFaceListId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Adds the face to large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="imageStream">The face image stream.</param>
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddFaceToLargeFaceListAsync(string largeFaceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Deletes the face from large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="persistedFaceId">The persisted face identifier.</param>
+        /// <returns>Task object.</returns>
+        Task DeleteFaceFromLargeFaceListAsync(string largeFaceListId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Gets the face in large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="persistedFaceId">The persisted face identifier.</param>
+        /// <returns>Persisted Face object.</returns>
+        Task<PersistedFace> GetFaceInLargeFaceListAsync(string largeFaceListId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Lists the faces in large face lists asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="start">The start point string to list faces in large face lists.</param>
+        /// <param name="top">The number of faces to list.</param>
+        /// <returns>PersistedFace array.</returns>
+        Task<PersistedFace[]> ListFacesInLargeFaceListAsync(string largeFaceListId, string start = "", int top = 1000);
+
+        /// <summary>
+        /// Updates the face in large face list asynchronously.
+        /// </summary>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="persistedFaceId">The persisted face identifier.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdateFaceInLargeFaceListAsync(string largeFaceListId, Guid persistedFaceId, string userData);
+
+        /// <summary>
+        /// Creates the large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task CreateLargePersonGroupAsync(string largePersonGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Deletes a large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <returns>Task object.</returns>
+        Task DeleteLargePersonGroupAsync(string largePersonGroupId);
+
+        /// <summary>
+        /// Gets a large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <returns>The large person group entity.</returns>
+        Task<LargePersonGroup> GetLargePersonGroupAsync(string largePersonGroupId);
+
+        /// <summary>
+        /// Gets large person group training status asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <returns>The large person group training status.</returns>
+        Task<TrainingStatus> GetLargePersonGroupTrainingStatusAsync(string largePersonGroupId);
+
+        /// <summary>
+        /// Asynchronously list the top large person groups whose Id is larger than "start".
+        /// </summary>
+        /// <param name="start">the start point string in listing large person groups</param>
+        /// <param name="top">the number of large person groups to list</param>
+        /// <returns>The large person group entity array.</returns>
+        Task<LargePersonGroup[]> ListLargePersonGroupsAsync(string start = "", int top = 1000);
+
+        /// <summary>
+        /// Trains the large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <returns>Task object.</returns>
+        Task TrainLargePersonGroupAsync(string largePersonGroupId);
+
+        /// <summary>
+        /// Updates a large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdateLargePersonGroupAsync(string largePersonGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Creates a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>The CreatePersonResult entity.</returns>
+        Task<CreatePersonResult> CreatePersonInLargePersonGroupAsync(string largePersonGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Deletes a person from large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>Task object.</returns>
+        Task DeletePersonFromLargePersonGroupAsync(string largePersonGroupId, Guid personId);
+
+        /// <summary>
+        /// Gets a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>The person entity.</returns>
+        Task<Person> GetPersonInLargePersonGroupAsync(string largePersonGroupId, Guid personId);
+
+        /// <summary>
+        /// Asynchronously list the top persons in large person group whose Id is larger than "start".
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="start">The start point string in listing persons</param>
+        /// <param name="top">The number of persons to list</param>
+        /// <returns>Person entity array.</returns>
+        Task<Person[]> ListPersonsInLargePersonGroupAsync(string largePersonGroupId, string start = "", int top = 1000);
+
+        /// <summary>
+        /// Updates a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdatePersonInLargePersonGroupAsync(string largePersonGroupId, Guid personId, string name, string userData = null);
+
+        /// <summary>
+        /// Adds a face to a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageUrl">The face image URL.</param>
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddPersonFaceInLargePersonGroupAsync(string largePersonGroupId, Guid personId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Adds a face to a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageStream">The face image stream.</param>
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The Target Face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddPersonFaceInLargePersonGroupAsync(string largePersonGroupId, Guid personId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Deletes a face of a person from large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>Task object.</returns>
+        Task DeletePersonFaceFromLargePersonGroupAsync(string largePersonGroupId, Guid personId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Gets a face of a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>The person face entity.</returns>
+        Task<PersistedFace> GetPersonFaceInLargePersonGroupAsync(string largePersonGroupId, Guid personId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Updates a face of a person in large person group asynchronously.
+        /// </summary>
+        /// <param name="largePersonGroupId">The large person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdatePersonFaceInLargePersonGroupAsync(string largePersonGroupId, Guid personId, Guid persistedFaceId, string userData = null);
+
         #endregion Methods
     }
 }
