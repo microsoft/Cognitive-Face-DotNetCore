@@ -682,6 +682,7 @@ namespace Microsoft.ProjectOxford.Face
             await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
         }
 
+
         /// <summary>
         /// Finds the similar faces asynchronously.
         /// </summary>
@@ -693,7 +694,7 @@ namespace Microsoft.ProjectOxford.Face
         /// </returns>
         public async Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, int maxNumOfCandidatesReturned = 20)
         {
-            return await FindSimilarAsync(faceId, faceIds, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
+            return await this.FindSimilarAsync(faceId, faceIds, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
         }
 
         /// <summary>
@@ -708,7 +709,7 @@ namespace Microsoft.ProjectOxford.Face
         /// </returns>
         public async Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceHost, FindSimilarsQuery);
+            var requestUrl = $"{this.ServiceHost}/{FindSimilarsQuery}";
 
             return await this.SendRequestAsync<object, SimilarFace[]>(
                 HttpMethod.Post,
@@ -733,7 +734,7 @@ namespace Microsoft.ProjectOxford.Face
         /// </returns>
         public async Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, int maxNumOfCandidatesReturned = 20)
         {
-            return await FindSimilarAsync(faceId, faceListId, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
+            return await this.FindSimilarAsync(faceId, faceListId, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
         }
 
         /// <summary>
@@ -748,20 +749,41 @@ namespace Microsoft.ProjectOxford.Face
         /// </returns>
         public async Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceHost, FindSimilarsQuery);
-
-            return await this.SendRequestAsync<object, SimilarPersistedFace[]>(
-                HttpMethod.Post,
-                requestUrl,
-                new
-                {
-                    faceId = faceId,
-                    faceListId = faceListId,
-                    maxNumOfCandidatesReturned = maxNumOfCandidatesReturned,
-                    mode = mode.ToString()
-                });
+            return await this.FindSimilarAsync(faceId, faceListId, null, mode, maxNumOfCandidatesReturned);
         }
 
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        public async Task<SimilarPersistedFace[]> FindSimilarAsync(
+            Guid faceId,
+            string faceListId = null,
+            string largeFaceListId = null,
+            FindSimilarMatchMode mode = FindSimilarMatchMode.matchPerson,
+            int maxNumOfCandidatesReturned = 20)
+        {
+            var requestUrl = $"{this.ServiceHost}/{FindSimilarsQuery}";
+
+            return await this.SendRequestAsync<object, SimilarPersistedFace[]>(
+                       HttpMethod.Post,
+                       requestUrl,
+                       new
+                       {
+                           faceId = faceId,
+                           faceListId = faceListId,
+                           largeFaceListId = largeFaceListId,
+                           maxNumOfCandidatesReturned = maxNumOfCandidatesReturned,
+                           mode = mode.ToString()
+                       });
+        }
         /// <summary>
         /// Groups the face asynchronously.
         /// </summary>

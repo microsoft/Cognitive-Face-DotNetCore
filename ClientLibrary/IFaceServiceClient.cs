@@ -284,6 +284,7 @@ namespace Microsoft.ProjectOxford.Face
         /// <returns>
         /// The similar persisted faces.
         /// </returns>
+        [Obsolete("use the FindSimilarAsync support both Face List and Large Face List instead")]
         Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, int maxNumOfCandidatesReturned = 20);
 
         /// <summary>
@@ -296,7 +297,21 @@ namespace Microsoft.ProjectOxford.Face
         /// <returns>
         /// The similar persisted faces.
         /// </returns>
+        [Obsolete("use the FindSimilarAsync support both Face List and Large Face List instead")]
         Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20);
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="largeFaceListId">The large face list identifier.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId = null, string largeFaceListId = null, FindSimilarMatchMode mode = FindSimilarMatchMode.matchPerson, int maxNumOfCandidatesReturned = 20);
 
         /// <summary>
         /// Gets the face list asynchronously.
