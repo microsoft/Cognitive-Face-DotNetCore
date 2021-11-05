@@ -1,3 +1,5 @@
+# :warning: This repository has been archived. Please visit the Face [QuickStart](https://docs.microsoft.com/en-us/azure/cognitive-services/face/quickstarts/client-libraries?tabs=visual-studio&pivots=programming-language-csharp) to get started with the latest Face SDKs. :warning:
+
 ![Face](Docs/Images/Face.png)
 
 # Face API: .NET Core Client Library & Sample
